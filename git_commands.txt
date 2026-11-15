@@ -1,0 +1,181 @@
+================================================================================
+                    GIT COMMANDS DOCUMENTATION - LANTERN LOG
+                 BITS Pilani - Software Development & Engineering
+================================================================================
+
+Student Name  : Naman Anand
+Student Email : 2024eb02504@online.bits-pilani.ac.in
+Repository    : https://github.com/NamanAnand66/lantern-log.git
+
+This document lists all Git commands executed during the completion of the
+Version Control Workflow assignment, along with concise explanations.
+
+--------------------------------------------------------------------------------
+1. LOCAL REPOSITORY SETUP & INITIALIZATION
+--------------------------------------------------------------------------------
+Command:
+  mkdir -p lantern-log && cd lantern-log
+Explanation:
+  Creates the local project directory 'lantern-log' and navigates into it.
+
+Command:
+  git init -b main
+Explanation:
+  Initializes a new, empty Git repository in the current directory with the
+  default branch explicitly named 'main'.
+
+--------------------------------------------------------------------------------
+2. STAGING & COMMIT OPERATIONS (INITIAL & SECOND COMMITS)
+--------------------------------------------------------------------------------
+Command:
+  git status
+Explanation:
+  Displays the state of the working directory and staging area, showing tracked,
+  untracked, and modified files.
+
+Command:
+  git add index.html about.html
+Explanation:
+  Adds 'index.html' and 'about.html' to the Git staging area (index) to prepare
+  them for the initial commit.
+
+Command:
+  git commit -m "Initial commit: Add index.html and about.html"
+Explanation:
+  Records a snapshot of the staged files to the repository history with an
+  informative commit message.
+
+Command:
+  git diff
+Explanation:
+  Shows unstaged modifications between the working directory and the staging area
+  before staging updated files.
+
+Command:
+  git add index.html
+Explanation:
+  Stages the modified 'index.html' containing the navigation header and release notes.
+
+Command:
+  git commit -m "Update index.html: Add navigation bar and latest release notes"
+Explanation:
+  Creates the second commit on the main branch capturing updates to index.html.
+
+--------------------------------------------------------------------------------
+3. BRANCHING & MERGING OPERATIONS
+--------------------------------------------------------------------------------
+Command:
+  git branch feature
+Explanation:
+  Creates an independent branch named 'feature' pointing to the current commit
+  without switching to it.
+
+Command:
+  git checkout feature
+Explanation:
+  Switches the active working branch to 'feature' so subsequent commits are
+  isolated from 'main'.
+
+Command:
+  git add about.html
+Explanation:
+  Stages changes made in 'about.html' on the feature branch.
+
+Command:
+  git commit -m "feat: Expand core features list and add contact section on feature branch"
+Explanation:
+  Commits the new feature changes specifically into the 'feature' branch history.
+
+Command:
+  git checkout main
+Explanation:
+  Switches HEAD and the working tree back to the primary 'main' branch.
+
+Command:
+  git merge --no-ff feature -m "Merge branch 'feature' into main"
+Explanation:
+  Merges changes from 'feature' into 'main' using the --no-ff (no-fast-forward)
+  flag to guarantee the creation of an explicit merge commit preserving branch history.
+
+Command:
+  git log --graph --oneline --all
+Explanation:
+  Visualizes the full commit tree, branch pointers, and merge topology across
+  all branches in an ASCII graph.
+
+--------------------------------------------------------------------------------
+4. .GITIGNORE CONFIGURATION & VERIFICATION
+--------------------------------------------------------------------------------
+Command:
+  cat << 'EOF' > .gitignore
+  *.log
+  temp/
+  EOF
+Explanation:
+  Creates a .gitignore file specifying patterns to ignore all .log files and
+  the temporary directory 'temp/'.
+
+Command:
+  git add .gitignore
+Explanation:
+  Stages the .gitignore configuration file so Git tracks and enforces ignore rules.
+
+Command:
+  git commit -m "chore: Add .gitignore to ignore *.log files and temp/ directory"
+Explanation:
+  Commits the .gitignore file into repository history to make ignore rules permanent.
+
+--------------------------------------------------------------------------------
+5. UNDO OPERATION (GIT RESET)
+--------------------------------------------------------------------------------
+Command:
+  git add test_experiment.txt && git commit -m "temp: Experimental test commit to demonstrate undo"
+Explanation:
+  Creates an extra commit containing experimental changes to set up the undo demonstration.
+
+Command:
+  git reset --soft HEAD~1
+Explanation:
+  Undoes the most recent commit, moving HEAD back by one commit while preserving
+  staged changes in the index so work is not lost.
+
+Command:
+  git restore --staged test_experiment.txt
+Explanation:
+  Unstages the experimental file from the index back to an untracked state in the
+  working directory.
+
+Command:
+  git revert HEAD --no-edit (Alternative Undo Method)
+Explanation:
+  Generates a new forward commit that inverses the changes of the target commit,
+  recommended when working on shared/remote branches.
+
+--------------------------------------------------------------------------------
+6. REMOTE REPOSITORY & GITHUB INTEGRATION
+--------------------------------------------------------------------------------
+Command:
+  git remote add origin https://github.com/NamanAnand66/lantern-log.git
+Explanation:
+  Links the local repository to the remote public repository hosted on GitHub.
+
+Command:
+  git remote -v
+Explanation:
+  Lists all configured remote connections and their fetch and push target URLs.
+
+Command:
+  git push -u origin main
+Explanation:
+  Uploads the 'main' branch commits to the remote GitHub repository and sets
+  upstream tracking.
+
+Command:
+  git push -u origin feature
+Explanation:
+  Pushes the isolated 'feature' branch to GitHub so all branching history and
+  collaborative branches are visible on GitHub.
+
+================================================================================
+                          END OF GIT COMMANDS LOG
+================================================================================
